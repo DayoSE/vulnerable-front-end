@@ -1,6 +1,6 @@
 version: '2.1'
 orbs:
-  bridgecrew: bridgecrew/bridgecrew@1.0.5
+  bridgecrew: bridgecrew/checkov@1.0.5
 jobs:
   build:
     machine: true
