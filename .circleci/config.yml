@@ -6,7 +6,7 @@ jobs:
     machine: true
     steps:
       - checkout
-      - bridgecrew/install
+      - checkov/install
       - bridgecrew/scan:
           api-key-variable: BC_API_KEY
           directory: .
