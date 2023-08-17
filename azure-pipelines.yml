@@ -1,0 +1,30 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.8'
+  displayName: 'Install Python 3.8'
+- script: pip install checkov
+  displayName: 'Install Checkov'
+- script: checkov -d . --bc-api-key "d79d3402-38e6-422b-91f4-1f96ae1097fe::12WjtDDXe07mCAFNVEqFvg/H6vY=" --repo-id "DayoSE/vulnerable-front-end" 
+
+  displayName: 'Scan with Prisma Cloud'
+  env:
+    PRISMA_API_URL: 'https://api.prismacloud.io'
